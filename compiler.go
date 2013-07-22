@@ -18,7 +18,7 @@ import (
 	"strings"
 )
 
-var builtinFunctions = [...]string{
+var builtinFunctions = []string{
 	"len",
 	"print",
 	"printf",
@@ -337,7 +337,7 @@ func (c *Compiler) visitTag(tag *parser.Tag) {
 
 		if !item.IsRaw {
 			attr.value = c.visitInterpolation(item.Value)
-		} else if (item.Value == "") {
+		} else if item.Value == "" {
 			attr.value = ""
 		} else {
 			attr.value = `{{"` + item.Value + `"}}`
